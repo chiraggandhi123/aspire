@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   images: {
     unoptimized: true,
+    loader: 'custom',
+    loaderFile: './src/utils/imageLoader.ts',
   },
   webpack(config) {
     config.module.rules.push({
