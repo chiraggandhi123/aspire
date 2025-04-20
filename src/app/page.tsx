@@ -7,6 +7,7 @@ import AddCardModal from './components/Card/AddCardModal';
 import CardDetails from './components/Card/CardDetails';
 import styles from './page.module.scss';
 import AddSvg from '../../public/assets/add.svg';
+import Image from 'next/image';
 import CardActions from './components/Card/CardActions';
 import useCardStore from '@/utils/store';
 import { Transaction } from '@/types';
@@ -60,8 +61,7 @@ export default function Home() {
             onClick={() => setIsModalOpen(true)}
             className={styles.page__newCard}
           >
-            <img src={AddSvg} alt="add" height={16} width={16}/>
-            {/* <Image height={16} width={16} src={AddSvg} alt="add" /> */}
+            <Image height={16} width={16} src={AddSvg} alt="add" />
             New Card
           </div>
         </div>
