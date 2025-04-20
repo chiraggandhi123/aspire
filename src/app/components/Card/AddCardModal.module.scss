@@ -1,0 +1,96 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  z-index: 1001;
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #0C365A;
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    margin-top: 16px;
+  }
+
+  &__field {
+    margin-bottom: 24px;
+  }
+
+  &__label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #0C365A;
+    margin-bottom: 8px;
+  }
+
+  &__input {
+    display: block;
+    width: 80%;
+    border-radius: 8px;
+    border: 1px solid #D1D5DB;
+    padding: 12px 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      border-color: #01D167;
+      box-shadow: 0 0 0 1px #01D167;
+      outline: none;
+    }
+  }
+
+  &__actions {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+
+  &__button {
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+
+    &--cancel {
+      border: 1px solid #D1D5DB;
+      background-color: white;
+      color: #0C365A;
+
+      &:hover {
+        background-color: #F9FAFB;
+      }
+    }
+
+    &--submit {
+      background-color: #01D167;
+      color: white;
+      border: none;
+
+      &:hover {
+        background-color: #00C15A;
+      }
+    }
+  }
+} 

@@ -1,0 +1,75 @@
+.header {
+  background-color: white;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    @media (min-width: 640px) {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #01D167;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+  }
+
+  &__avatarText {
+    color: white;
+    font-weight: bold;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #0C365A;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__button {
+    color: #0C365A;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #01D167;
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+} 

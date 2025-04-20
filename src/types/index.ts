@@ -1,3 +1,12 @@
+export interface Transaction {
+  id: string;
+  merchant: string;
+  date: string;
+  amount: number;
+  type: 'charge' | 'refund';
+  icon: 'shopping' | 'flight' | 'megaphone' | 'coffee';
+}
+
 export interface Card {
   id: string;
   name: string;

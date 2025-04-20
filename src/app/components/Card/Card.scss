@@ -1,0 +1,130 @@
+.card-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 0;
+  .show-number-btn {
+    top: -16px;
+    right: -16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: white;
+    color: #01D167;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #f8f8f8;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .card {
+    box-sizing: border-box;
+    width: 414px;
+    height:250px;
+    position: relative;
+    z-index: 0;
+    border-radius: 12px;
+    background-color: #01D167;
+    padding: 27px;
+    color: white;
+    transition: opacity 0.3s ease;
+
+    &.frozen {
+      opacity: 0.5;
+    }
+
+    .logo-placeholder {
+      background-image: url('../../../../public/assets/Aspire\ Logo-1.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 83px;
+      height: 24px;
+      // background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
+
+    .card-content {
+      margin-top: 48px;
+
+      .card-holder-name {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .card-number {
+        margin-top: 24px;
+        font-family: monospace;
+        letter-spacing: 0.2em;
+        font-size: 20px;
+
+        .number-group {
+          display: flex;
+          gap: 16px;
+
+          span {
+            min-width: 60px;
+          }
+        }
+      }
+      .card-details {
+        margin-top: 17px;
+        display: flex;
+        gap: 32px;
+
+        .detail-group {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          label {
+            font-size: 12px;
+            opacity: 0.7;
+          }
+
+          p {
+            // margin-top: 4px;
+            font-size: 14px;
+          }
+        }
+      }
+
+    }
+
+    .card-footer {
+      position: absolute;
+      bottom: 24px;
+      // left: 24px;
+      right: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+    
+      .visa-logo-placeholder {
+        background-image: url('../../../../public/assets/Visa\ Logo.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 60px;
+        height: 20px;
+        // background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+      }
+    }
+  }
+} 

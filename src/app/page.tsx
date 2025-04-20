@@ -1,29 +1,105 @@
 'use client';
 
-import React, { useState } from 'react';
-import Header from './components/Header/Header';
+import React, { useEffect, useState } from 'react';
+import Sidebar from './components/Sidebar/Sidebar';
 import CardList from './components/Card/CardList';
 import AddCardModal from './components/Card/AddCardModal';
+import CardDetails from './components/Card/CardDetails';
+import styles from './page.module.scss';
+import AddSvg from '../../public/assets/add.svg';
+import Image from 'next/image';
+import CardActions from './components/Card/CardActions';
+import useCardStore from '@/utils/store';
+import { Transaction, Card } from '@/types';
+const mockTransactions: Transaction[] = [
+  {
+    id: '1',
+    merchant: 'Hamleys',
+    date: '20 May 2020',
+    amount: 150,
+    type: 'charge',
+    icon: 'shopping'
+  },
+  {
+    id: '2',
+    merchant: 'Hamleys',
+    date: '20 May 2020',
+    amount: 150,
+    type: 'refund',
+    icon: 'shopping'
+  },
+  {
+    id: '3',
+    merchant: 'Hamleys',
+    date: '20 May 2020',
+    amount: 150,
+    type: 'charge',
+    icon: 'shopping'
+  },
+];
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<'my' | 'all'>('my');
+  const [activeIdx, setActiveIdx] = useState(0);
+  const { toggleFreeze, cards } = useCardStore();
 
+
+  console.log("activeCard", activeIdx);
   return (
-    <main className="min-h-screen bg-gray-50">
-      <Header />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex justify-between items-center mb-8">
-          <h2 className="text-2xl font-bold text-gray-900">My Cards</h2>
+    <div className={styles.page}>
+      <Sidebar />
+      <main className={styles.page__main}>
+        <div className={styles.page__header}>
+          <div>
+            <h2 className={styles.page__balanceTitle}>Available Balance</h2>
+            <div className={styles.page__balanceAmount}>
+              <span className={styles.page__balanceCurrency}>S$</span>
+              <span className={styles.page__balanceValue}>3,000</span>
+            </div>
+          </div>
           <button
             onClick={() => setIsModalOpen(true)}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+            className={styles.page__newCard}
           >
-            Add New Card
+            <Image height={16} width={16} src={AddSvg} alt="add" />
+
+            New Card
           </button>
         </div>
-        <CardList />
-      </div>
+
+        <div className={styles.page__tabs}>
+          <div className={styles.page__tabList}>
+            <nav className={styles.page__tabNav}>
+              <div
+                onClick={() => setActiveTab('my')}
+                className={`${styles.page__tab} ${activeTab === 'my' ? styles['page__tab--active'] : styles['page__tab--inactive']}`}
+              >
+                My debit cards
+              </div>
+              <div
+                onClick={() => setActiveTab('all')}
+                className={`${styles.page__tab} ${activeTab === 'all' ? styles['page__tab--active'] : styles['page__tab--inactive']}`}
+              >
+                All company cards
+              </div>
+            </nav>
+          </div>
+        </div>
+
+        <div className={styles.page__grid}>
+          <div className={styles.page__cardList}>
+            <CardList setActiveIdx={setActiveIdx} />
+            <CardActions
+              onFreezeToggle={() => toggleFreeze(cards[activeIdx].id)} isFrozen={cards[activeIdx].isFrozen}
+            />
+          </div>
+          <div className={styles.page__cardDetails}>
+            <CardDetails transactions={mockTransactions as Transaction[]} />
+          </div>
+        </div>
+      </main>
       <AddCardModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-    </main>
+    </div>
   );
 }

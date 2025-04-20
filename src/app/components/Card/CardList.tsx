@@ -1,27 +1,50 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Card from './Card';
+import CardActions from './CardActions';
 import useCardStore from '../../../utils/store';
+import styles from './CardList.module.scss';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
-const CardList: React.FC = () => {
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
+
+interface CardListProps {
+  setActiveIdx: (idx: number) => void;
+}
+
+const CardList: React.FC<CardListProps> = ({ setActiveIdx }) => {
   const { cards, toggleFreeze } = useCardStore();
 
+  const handleSlideChange = (swiper: Swiper) => {
+    setActiveIdx(swiper?.activeIndex);
+  };        
+
   return (
-    <div className="flex space-x-4 overflow-x-auto pb-4">
-      <AnimatePresence>
+    <div className={styles.cardList}>
+      <Swiper
+        pagination={{
+          clickable: true,
+          dynamicBullets: false,
+          renderBullet: function (index, className) {
+            return `<span class="${className}"></span>`;
+          },
+        }}
+        onSlideChange={handleSlideChange}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
         {cards.map((card) => (
-          <motion.div
-            key={card.id}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="flex-shrink-0"
-          >
+          <SwiperSlide key={card.id}>
             <Card card={card} onFreezeToggle={() => toggleFreeze(card.id)} />
-          </motion.div>
+          </SwiperSlide>  
         ))}
-      </AnimatePresence>
+      </Swiper>
+      
     </div>
+    
   );
 };
 

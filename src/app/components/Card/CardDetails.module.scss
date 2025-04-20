@@ -1,0 +1,159 @@
+.cardDetails {
+  // background-color: #F5F9FF;
+  // border-radius: 14px;
+  // padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__section {
+    // background: white;/
+    border-radius: 14px;
+    // padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
+    background-color: #F5F9FF;
+    border: 1px solid #F5F5F5;
+    box-shadow: 0px 0px 8px #0000000A;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__button {
+    padding: 16px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__buttonContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__iconWrapper {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #EDF3FF;
+    border-radius: 50%;
+  }
+
+  &__buttonText {
+    color: #0C365A;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__chevron {
+    color: #325BAF;
+    transition: transform 0.3s ease;
+
+    &--expanded {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__transactions {
+    background-color: #fff;
+    padding: 16px;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__transaction {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #F5F5F5;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  &__transactionContent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__transactionIcon {
+    width: 48px;
+    height: 48px;
+    background-color: #EDF3FF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__transactionInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__transactionMerchant {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__transactionDate {
+    color: #AAAAAA;
+    font-size: 13px;
+  }
+
+  &__transactionType {
+    color: #325BAF;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  &__amount {
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+
+    &--refund {
+      color: #01D167;
+    }
+  }
+
+  &__viewAll {
+    color: #01D167;
+    font-size: 14px;
+    font-weight: 600;
+    background: none;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #F5F5F5;
+    margin-top: 8px;
+
+    &:hover {
+      background-color: #F5F9FF;
+    }
+  }
+
+  &__expandedContent {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #F5F5F5;
+  }
+}

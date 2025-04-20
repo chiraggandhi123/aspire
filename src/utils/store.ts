@@ -3,28 +3,36 @@ import { persist } from 'zustand/middleware';
 import { Card, CardState } from '../types';
 
 const useCardStore = create<CardState>()(
-  persist(
     (set) => ({
       cards: [
         {
-          id: '1',
-          name: 'Mark Henry',
-          cardNumber: '5647341124132020',
-          expiryDate: '12/20',
-          cvv: '456',
-          isFrozen: false,
-          cardType: 'visa',
+            "name": "Chirag Gandhi",
+            "cardNumber": "9443316436248059",
+            "expiryDate": "10/29",
+            "cvv": "576",
+            "isFrozen": false,
+            "cardType": "visa",
+            "id": "uwo2sszxi"
         },
         {
-          id: '2',
-          name: 'John Doe',
-          cardNumber: '5647341124132021',
-          expiryDate: '12/21',
-          cvv: '457',
-          isFrozen: false,
-          cardType: 'mastercard',
+            "name": "kjsjkdfghsad",
+            "cardNumber": "8281345414043152",
+            "expiryDate": "08/27",
+            "cvv": "851",
+            "isFrozen": false,
+            "cardType": "visa",
+            "id": "wlufl668g"
         },
-      ],
+        {
+            "name": "kjnkjhkj",
+            "cardNumber": "9794262536625046",
+            "expiryDate": "12/26",
+            "cvv": "570",
+            "isFrozen": false,
+            "cardType": "mastercard",
+            "id": "emmtj4s46"
+        }
+    ],
       addCard: (card) =>
         set((state) => ({
           cards: [
@@ -46,10 +54,8 @@ const useCardStore = create<CardState>()(
           cards: state.cards.filter((card) => card.id !== cardId),
         })),
     }),
-    {
-      name: 'card-storage',
-    }
-  )
+  
+  
 );
 
 export default useCardStore; 

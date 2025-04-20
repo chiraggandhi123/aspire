@@ -1,0 +1,64 @@
+.sidebar {
+  min-width: 340px;
+  width: 340px;
+  background-color: #0C365A;
+  height: 100vh;
+  color: white;
+  padding: 48px 0 0 48px;
+
+  &__header {
+    margin-bottom: 81px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #01D167;
+  }
+
+  &__subtitle {
+    margin-top: 19px;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    opacity: 0.3;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #9B9B9B;
+    padding: 8px 0;
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: white;
+    }
+
+    &--active {
+      color: #01D167;
+    }
+  }
+
+
+} 

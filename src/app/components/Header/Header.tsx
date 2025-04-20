@@ -1,15 +1,21 @@
 import React from 'react';
+import styles from './Header.module.scss';
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-gray-900">Aspire</h1>
-          <div className="flex items-center space-x-4">
-            <button className="text-gray-600 hover:text-gray-900">
+    <header className={styles.header}>
+      <div className={styles.header__container}>
+        <div className={styles.header__content}>
+          <div className={styles.header__logo}>
+            <div className={styles.header__avatar}>
+              <span className={styles.header__avatarText}>A</span>
+            </div>
+            <h1 className={styles.header__title}>Aspire</h1>
+          </div>
+          <div className={styles.header__actions}>
+            <button className={styles.header__button}>
               <svg
-                className="h-6 w-6"
+                className={styles.header__icon}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -22,9 +28,9 @@ const Header: React.FC = () => {
                 />
               </svg>
             </button>
-            <button className="text-gray-600 hover:text-gray-900">
+            <button className={styles.header__button}>
               <svg
-                className="h-6 w-6"
+                className={styles.header__icon}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

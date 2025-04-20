@@ -1,0 +1,38 @@
+.cardList {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  width: 414px;
+  &__item {
+    flex-shrink: 0;
+  }
+}
+
+/* Swiper pagination styles */
+:global(.swiper) {
+  padding-bottom: 40px !important;
+}
+
+:global(.swiper-pagination) {
+  bottom: 0 !important;
+}
+
+:global(.swiper-pagination-bullet) {
+  width: 8px !important;
+  height: 8px !important;
+  background: #DDDDDD !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background: #01D167 !important;
+  width: 16px !important;
+  border-radius: 4px !important;
+}
+
+:global(.swiper-pagination-bullet-active-next),
+:global(.swiper-pagination-bullet-active-prev) {
+  transform: scale(0.8) !important;
+} 
