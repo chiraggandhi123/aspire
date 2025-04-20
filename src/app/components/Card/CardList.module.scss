@@ -13,15 +13,15 @@
 }
 
 /* Swiper pagination styles */
-:global(.swiper) {
+.swiper {
   padding-bottom: 40px !important;
 }
 
-:global(.swiper-pagination) {
+.swiper-pagination {
   bottom: 0 !important;
 }
 
-:global(.swiper-pagination-bullet) {
+.swiper-pagination-bullet {
   width: 8px !important;
   height: 8px !important;
   background: #DDDDDD !important;
@@ -29,13 +29,13 @@
   transition: all 0.3s ease !important;
 }
 
-:global(.swiper-pagination-bullet-active) {
+.swiper-pagination-bullet-active {
   background: #01D167 !important;
   width: 16px !important;
   border-radius: 4px !important;
 }
 
-:global(.swiper-pagination-bullet-active-next),
-:global(.swiper-pagination-bullet-active-prev) {
+.swiper-pagination-bullet-active-next,
+.swiper-pagination-bullet-active-prev {
   transform: scale(0.8) !important;
 } 

@@ -1,6 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { Card, CardState } from '../types';
+import {  CardState } from '../types';
 
 const useCardStore = create<CardState>()(
     (set) => ({

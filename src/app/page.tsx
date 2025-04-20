@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Sidebar from './components/Sidebar/Sidebar';
 import CardList from './components/Card/CardList';
 import AddCardModal from './components/Card/AddCardModal';
@@ -10,7 +10,7 @@ import AddSvg from '../../public/assets/add.svg';
 import Image from 'next/image';
 import CardActions from './components/Card/CardActions';
 import useCardStore from '@/utils/store';
-import { Transaction, Card } from '@/types';
+import { Transaction } from '@/types';
 const mockTransactions: Transaction[] = [
   {
     id: '1',

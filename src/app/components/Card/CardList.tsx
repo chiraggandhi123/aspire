@@ -1,10 +1,9 @@
 import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import Card from './Card';
-import CardActions from './CardActions';
 import useCardStore from '../../../utils/store';
 import styles from './CardList.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import type { Swiper as SwiperType } from 'swiper';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -17,9 +16,8 @@ interface CardListProps {
 
 const CardList: React.FC<CardListProps> = ({ setActiveIdx }) => {
   const { cards, toggleFreeze } = useCardStore();
-
-  const handleSlideChange = (swiper: Swiper) => {
-    setActiveIdx(swiper?.activeIndex);
+  const handleSlideChange = (swiper: SwiperType) => {
+    setActiveIdx(swiper.activeIndex);
   };        
 
   return (

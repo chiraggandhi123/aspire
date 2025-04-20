@@ -10,6 +10,32 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  .swiper {
+    padding-bottom: 40px !important;
+  }
+  
+  .swiper-pagination {
+    bottom: 0 !important;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    background: #DDDDDD !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #01D167 !important;
+    width: 16px !important;
+    border-radius: 4px !important;
+  }
+  
+  .swiper-pagination-bullet-active-next,
+  .swiper-pagination-bullet-active-prev {
+    transform: scale(0.8) !important;
+  } 
 }
 
 /* Custom scrollbar styles */
@@ -50,3 +76,4 @@ body {
 .btn-secondary {
   /* @apply bg-white text-gray-700 border border-gray-300 px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors; */
 }
+

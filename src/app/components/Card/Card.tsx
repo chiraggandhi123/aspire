@@ -8,14 +8,11 @@ interface CardProps {
   onFreezeToggle: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ card, onFreezeToggle }) => {
+const Card: React.FC<CardProps> = ({ card }) => {
   const [showCardNumber, setShowCardNumber] = useState(false);
 
-  const formatCardNumber = (number: string) => {
-    return number.replace(/(\d{4})/g, '$1 ').trim();
-  };
 
-  const maskedCardNumber = '•••• •••• •••• ' + card.cardNumber.slice(-4);
+
 
   return (
     <div className={styles.cardWrapper}>
