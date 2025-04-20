@@ -8,11 +8,46 @@ interface AddCardModalProps {
   onClose: () => void;
 }
 
+interface ValidationErrors {
+  name: string;
+}
+
 const AddCardModal: React.FC<AddCardModalProps> = ({ isOpen, onClose }) => {
   const [name, setName] = useState('');
+  const [touched, setTouched] = useState(false);
+  const [errors, setErrors] = useState<ValidationErrors>({ name: '' });
   const addCard = useCardStore((state) => state.addCard);
 
   if (!isOpen) return null;
+
+  const validateName = (value: string): string => {
+    if (!value.trim()) {
+      return 'Card name is required';
+    }
+    if (value.length < 3) {
+      return 'Card name must be at least 3 characters';
+    }
+    if (value.length > 50) {
+      return 'Card name must be less than 50 characters';
+    }
+    if (!/^[a-zA-Z\s]*$/.test(value)) {
+      return 'Card name can only contain letters and spaces';
+    }
+    return '';
+  };
+
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setName(value);
+    if (touched) {
+      setErrors({ ...errors, name: validateName(value) });
+    }
+  };
+
+  const handleBlur = () => {
+    setTouched(true);
+    setErrors({ ...errors, name: validateName(name) });
+  };
 
   const generateRandomCardNumber = () => {
     return Array.from({ length: 16 }, () => Math.floor(Math.random() * 10)).join('');
@@ -30,8 +65,18 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate before submission
+    const nameError = validateName(name);
+    setErrors({ name: nameError });
+    setTouched(true);
+
+    if (nameError) {
+      return;
+    }
+
     const newCard: Omit<Card, 'id'> = {
-      name,
+      name: name.trim(),
       cardNumber: generateRandomCardNumber(),
       expiryDate: generateRandomExpiryDate(),
       cvv: generateRandomCVV(),
@@ -40,6 +85,8 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ isOpen, onClose }) => {
     };
     addCard(newCard);
     setName('');
+    setTouched(false);
+    setErrors({ name: '' });
     onClose();
   };
 
@@ -47,11 +94,13 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ isOpen, onClose }) => {
     e.stopPropagation();
   };
 
+  const isSubmitDisabled = touched && !!errors.name;
+
   return (
     <div className={styles.overlay} onClick={onClose}>
       <div className={styles.modal} onClick={handleModalClick}>
         <h3 className={styles.modal__title}>Add New Card</h3>
-        <form onSubmit={handleSubmit} className={styles.modal__form}>
+        <form onSubmit={handleSubmit} className={styles.modal__form} noValidate>
           <div className={styles.modal__field}>
             <label htmlFor="name" className={styles.modal__label}>
               Card Name
@@ -60,11 +109,18 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ isOpen, onClose }) => {
               type="text"
               id="name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
-              className={styles.modal__input}
+              onChange={handleNameChange}
+              onBlur={handleBlur}
+              className={`${styles.modal__input} ${touched && errors.name ? styles['modal__input--error'] : ''}`}
               placeholder="Enter card name"
-              required
+              aria-invalid={!!errors.name}
+              aria-describedby="name-error"
             />
+            {touched && errors.name && (
+              <span id="name-error" className={styles.modal__error}>
+                {errors.name}
+              </span>
+            )}
           </div>
           <div className={styles.modal__actions}>
             <button
@@ -77,6 +133,7 @@ const AddCardModal: React.FC<AddCardModalProps> = ({ isOpen, onClose }) => {
             <button
               type="submit"
               className={`${styles.modal__button} ${styles['modal__button--submit']}`}
+              disabled={isSubmitDisabled}
             >
               Add Card
             </button>
