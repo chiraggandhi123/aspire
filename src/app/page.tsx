@@ -45,7 +45,6 @@ export default function Home() {
   const { toggleFreeze, cards } = useCardStore();
 
 
-  console.log("activeCard", activeIdx);
   return (
     <div className={styles.page}>
       <Sidebar />
@@ -58,14 +57,14 @@ export default function Home() {
               <span className={styles.page__balanceValue}>3,000</span>
             </div>
           </div>
-          <button
+          <div
             onClick={() => setIsModalOpen(true)}
             className={styles.page__newCard}
           >
             <Image height={16} width={16} src={AddSvg} alt="add" />
 
             New Card
-          </button>
+          </div>
         </div>
 
         <div className={styles.page__tabs}>

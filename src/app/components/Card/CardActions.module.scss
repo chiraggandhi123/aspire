@@ -8,7 +8,11 @@
   background-color: #EDF3FF;
   border-radius: 12px;
   padding: 16px;
-
+  @media screen and (max-width: 768px) {
+    position: absolute;
+    left: 0;
+    width: calc(100% - 32px);
+  }
   &__div {
     display: flex;
     flex-direction: column;

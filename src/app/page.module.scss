@@ -4,8 +4,56 @@
   display: flex;
   gap: 60px;
 
- 
 
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+    > :first-child {
+      display: none; // Hides the sidebar
+    }
+    &__main{
+      height: 610px;
+      background-color: #0C365A;
+      box-shadow: 0px 3px 6px 0px #0000001F;
+      margin-top: 0px !important;
+      padding: 0px 24px;
+      padding-top: 31px;
+    }
+    &__balanceTitle{
+      color: white !important;
+    }
+    &__balanceValue{
+      color: white !important;
+    }
+    &__balanceCurrency{
+      color: white !important;
+    }
+    &__newCard{
+      background-color: transparent !important;
+      color: #23CEFD !important;
+      // padding: 9px 12px;
+      // border-radius: 4px;
+    }
+    &__tab {
+    // padding: 16px 4px;
+    border-bottom-width: 2px;
+    font-weight: 500;
+    font-size: 14px;
+
+    &--active {
+      color: #FFFFFF !important;
+      
+    }
+
+    &--inactive {
+      border-color: transparent;
+      color: #FFFFFF !important;
+      opacity: 0.5 !important;
+
+     
+    }
+  }
+  }
   &__main {
     max-width: 900px;
     margin-top: 59px;
@@ -118,18 +166,26 @@
 
   &__grid {
     padding: 40px;
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    display: flex;
     gap: 32px;
     border-radius: 8px;
     box-shadow: 0px 2px 12px 0px #00000014;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      padding: 24px;
+      box-shadow: none;
+    }
   }
 
   &__cardList {
-    grid-column: span 7 / span 7;
+    flex: 7;
   }
 
   &__cardDetails {
-    grid-column: span 5 / span 5;
+    @media screen and (max-width: 768px) {
+      margin-top: 124px;
+    }
+    flex: 5;
   }
 }
